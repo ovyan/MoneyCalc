@@ -178,7 +178,11 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        endMessage.setContentOffset(CGPoint.zero, animated: false)
+    }
 
 }
 
