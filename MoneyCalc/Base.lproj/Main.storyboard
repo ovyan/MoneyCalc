@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="U4z-OR-oKE">
-                                <rect key="frame" x="25" y="327" width="114" height="30"/>
+                                <rect key="frame" x="25" y="327" width="166" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="kT6-VE-L7c"/>
                                 </constraints>
@@ -138,7 +138,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7.5" minValue="0.5" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="rN4-H9-4fg">
-                                <rect key="frame" x="188.66666666666663" y="326" width="197.33333333333337" height="31"/>
+                                <rect key="frame" x="219" y="326" width="167" height="31"/>
                                 <connections>
                                     <action selector="depositSliderChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="Jmk-xs-w8V"/>
                                 </connections>
@@ -169,7 +169,7 @@
                             <constraint firstItem="pBD-Wz-MvY" firstAttribute="bottom" secondItem="8Vj-vI-uMs" secondAttribute="bottom" constant="-4" id="0Wa-nF-hxi"/>
                             <constraint firstItem="9Jq-Vz-tgZ" firstAttribute="top" secondItem="xd6-RE-uoy" secondAttribute="bottom" constant="28" id="0m8-UF-nAg"/>
                             <constraint firstItem="U4z-OR-oKE" firstAttribute="top" secondItem="rN4-H9-4fg" secondAttribute="top" constant="1" id="1Qk-kh-FzC"/>
-                            <constraint firstItem="rN4-H9-4fg" firstAttribute="centerX" secondItem="cF1-H4-hfO" secondAttribute="centerX" id="1bg-x7-byL"/>
+                            <constraint firstItem="rN4-H9-4fg" firstAttribute="centerX" secondItem="cF1-H4-hfO" secondAttribute="centerX" constant="15.666666666666686" id="1bg-x7-byL"/>
                             <constraint firstItem="xd6-RE-uoy" firstAttribute="top" secondItem="KqN-bc-QLs" secondAttribute="top" constant="-1" id="4lB-Kn-FzZ"/>
                             <constraint firstItem="cF1-H4-hfO" firstAttribute="leading" secondItem="0P5-9P-Ial" secondAttribute="leading" id="6EF-SC-Zh9"/>
                             <constraint firstItem="f8J-jn-CwK" firstAttribute="leading" secondItem="IBi-nv-g7x" secondAttribute="leading" id="7w2-JK-FXk"/>
@@ -191,7 +191,7 @@
                             <constraint firstItem="f8J-jn-CwK" firstAttribute="top" secondItem="U4z-OR-oKE" secondAttribute="bottom" constant="34" id="LG5-ot-TW1"/>
                             <constraint firstItem="xd6-RE-uoy" firstAttribute="firstBaseline" secondItem="0P5-9P-Ial" secondAttribute="baseline" constant="-4" id="LGM-iZ-7dZ"/>
                             <constraint firstItem="IBi-nv-g7x" firstAttribute="baseline" secondItem="azM-p3-5U4" secondAttribute="baseline" id="LMh-Rz-Uwj"/>
-                            <constraint firstItem="U4z-OR-oKE" firstAttribute="centerX" secondItem="IBi-nv-g7x" secondAttribute="centerX" constant="-13" id="MxU-vF-BFQ"/>
+                            <constraint firstItem="U4z-OR-oKE" firstAttribute="centerX" secondItem="IBi-nv-g7x" secondAttribute="centerX" constant="12.666666666666671" id="MxU-vF-BFQ"/>
                             <constraint firstItem="f8J-jn-CwK" firstAttribute="baseline" secondItem="gEK-OL-Isz" secondAttribute="baseline" id="NxN-lj-Si9"/>
                             <constraint firstItem="vw2-6K-gDI" firstAttribute="trailing" secondItem="KqN-bc-QLs" secondAttribute="trailing" id="QPr-MP-NFF"/>
                             <constraint firstItem="rMU-xi-YNw" firstAttribute="trailing" secondItem="AYm-ov-9M4" secondAttribute="trailing" id="RDV-bu-B19"/>
@@ -246,7 +246,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="749.27536231884062" y="-321.19565217391306"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
