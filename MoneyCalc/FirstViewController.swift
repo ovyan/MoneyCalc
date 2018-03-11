@@ -16,9 +16,7 @@ final class FirstViewController: UIViewController {
     @IBOutlet var spendMoney: UITextField!
     @IBOutlet var myMoney: UITextField!
     @IBOutlet var depositPercentLabel: UILabel!
-
     @IBOutlet var depositSlider: UISlider!
-
     @IBAction func depositSliderChanged(_ sender: Any) {
         depositSlider.value = round(depositSlider.value * 2) / 2
         depositPercentLabel.text = "под \(depositSlider.value)%"
@@ -33,12 +31,11 @@ final class FirstViewController: UIViewController {
         updateMessage()
     }
     @IBOutlet var endMessage: UITextView!
-
     @IBOutlet var totalCredit: UILabel!
     @IBOutlet var totalDeposit: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         myMoney.keyboardType = UIKeyboardType.numberPad
         myMoney.text = "1000000"
         spendMoney.keyboardType = UIKeyboardType.numberPad
@@ -63,26 +60,11 @@ final class FirstViewController: UIViewController {
     }
 
     func countCredit() -> Int {
-        let s1 = flatPrice.text!.stripped
-        let s2 = myMoney.text!.stripped
-        let s3 = keepMoney.text!.stripped
-        let s4 = spendMoney.text!.stripped
-        var t: Float = 0.0
-        var k: Float = 0.0
-        var p: Float = 0.0
-        var p4: Float = 0.0
-        for i in s1 {
-            t = t * 10 + Float((Int(String(i)))!)
-        }
-        for i in s2 {
-            k = k * 10 + Float((Int(String(i)))!)
-        }
-        for i in s3 {
-            p = p * 10 + Float((Int(String(i)))!)
-        }
-        for i in s4 {
-            p4 = p4 * 10 + Float((Int(String(i)))!)
-        }
+        var t: Float = Float(getNum(s: flatPrice.text!))
+        let k: Float = Float(getNum(s: myMoney.text!))
+        let p: Float = Float(getNum(s: keepMoney.text!))
+        let p4: Float = Float(getNum(s: spendMoney.text!))
+        
         t -= k
         t *= creditSlider.value / 100
         t /= 12 * (p + p4)
@@ -98,21 +80,9 @@ final class FirstViewController: UIViewController {
     func countDeposit() -> Int {
         var j = 0
         var res: Double = 0
-        let s1 = keepMoney.text!.stripped
-        var keep: Double = 0
-        for i in s1 {
-            keep = keep * 10 + Double(Int(String(i))!)
-        }
-        let s2 = myMoney.text!.stripped
-        var my: Double = 0
-        for i in s2 {
-            my = my * 10 + Double(Int(String(i))!)
-        }
-        let s3 = flatPrice.text!.stripped
-        var price: Double = 0
-        for i in s3 {
-            price = price * 10 + Double(Int(String(i))!)
-        }
+        let keep: Double = Double(getNum(s: keepMoney.text!))
+        let my: Double = Double(getNum(s: myMoney.text!))
+        let price: Double = Double(getNum(s: flatPrice.text!))
         res = my
         while res < price {
             res = (res + keep) * (1 + Double(depositSlider.value) / 100 / 12)
@@ -148,13 +118,11 @@ final class FirstViewController: UIViewController {
         }
         if countCredit() == -1 {
             totalCredit.text = "Недоступно"
-            //totalCredit.textColor = UIColor.red
             totalCredit.layer.backgroundColor = UIColor(red: 180, green: 0, blue: 0, alpha: 1).cgColor
 
             let totalDepSum = (countDeposit() - 1) * (getNum(s: keepMoney.text!)) + getNum(s: myMoney.text!) + (countDeposit() * (getNum(s: spendMoney.text!)))
 
             totalDeposit.text = "\(totalDepSum.prettyNumber)₽"
-            //totalDeposit.backgroundColor = UIColor.init(red: 0, green: 153  , blue: 0, alpha: 1)
             totalDeposit.layer.backgroundColor = UIColor(red: 0, green: 160, blue: 0, alpha: 1).cgColor
 
             let totalCreditSum = (countDeposit() - 1) * (getNum(s: keepMoney.text!)) + getNum(s: myMoney.text!) + (countDeposit() * (getNum(s: spendMoney.text!)))
@@ -173,10 +141,8 @@ final class FirstViewController: UIViewController {
                 totalDeposit.layer.backgroundColor = UIColor(red: 0, green: 160, blue: 0, alpha: 1).cgColor
             } else {
                 totalCredit.text = "\(countCredit() * (getNum(s: keepMoney.text!) + getNum(s: spendMoney.text!)) + getNum(s: myMoney.text!))₽"
-                //totalCredit.textColor = UIColor.green
                 totalCredit.layer.backgroundColor = UIColor(red: 0, green: 160, blue: 0, alpha: 1).cgColor
                 totalDeposit.text = "\((countDeposit() - 1) * (getNum(s: keepMoney.text!)) + getNum(s: myMoney.text!) + (countDeposit() * (getNum(s: spendMoney.text!))))₽"
-                //totalDeposit.textColor = UIColor.red
                 totalDeposit.layer.backgroundColor = UIColor(red: 180, green: 0, blue: 0, alpha: 1).cgColor
 
             }
