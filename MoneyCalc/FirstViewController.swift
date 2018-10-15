@@ -10,7 +10,6 @@ import QuartzCore
 import UIKit
 
 final class FirstViewController: UIViewController {
-
     @IBOutlet var flatPrice: UITextField!
     @IBOutlet var keepMoney: UITextField!
     @IBOutlet var spendMoney: UITextField!
@@ -22,6 +21,7 @@ final class FirstViewController: UIViewController {
         depositPercentLabel.text = "под \(depositSlider.value)%"
         updateMessage()
     }
+
     @IBOutlet var creditPercentLabel: UILabel!
 
     @IBOutlet var creditSlider: UISlider!
@@ -30,10 +30,11 @@ final class FirstViewController: UIViewController {
         creditPercentLabel.text = "под \(creditSlider.value)%"
         updateMessage()
     }
+
     @IBOutlet var endMessage: UITextView!
     @IBOutlet var totalCredit: UILabel!
     @IBOutlet var totalDeposit: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         myMoney.keyboardType = UIKeyboardType.numberPad
@@ -47,7 +48,11 @@ final class FirstViewController: UIViewController {
         creditPercentLabel.text = "под \(creditSlider.value)%"
         depositPercentLabel.text = "под \(depositSlider.value)%"
         updateMessage()
+        setBackgroundColor()
+    }
 
+    private func setBackgroundColor() {
+        view.backgroundColor = #colorLiteral(red: 0.20170632, green: 0.737088263, blue: 0.599953115, alpha: 1)
     }
 
     func getNum(s: String) -> Int {
@@ -64,7 +69,7 @@ final class FirstViewController: UIViewController {
         let k: Float = Float(getNum(s: myMoney.text!))
         let p: Float = Float(getNum(s: keepMoney.text!))
         let p4: Float = Float(getNum(s: spendMoney.text!))
-        
+
         t -= k
         t *= creditSlider.value / 100
         t /= 12 * (p + p4)
@@ -144,7 +149,6 @@ final class FirstViewController: UIViewController {
                 totalCredit.layer.backgroundColor = UIColor(red: 0, green: 160, blue: 0, alpha: 1).cgColor
                 totalDeposit.text = "\((countDeposit() - 1) * (getNum(s: keepMoney.text!)) + getNum(s: myMoney.text!) + (countDeposit() * (getNum(s: spendMoney.text!))))₽"
                 totalDeposit.layer.backgroundColor = UIColor(red: 180, green: 0, blue: 0, alpha: 1).cgColor
-
             }
 
             endMessage.text = "Итог ипотеки: \(countCredit() * (getNum(s: keepMoney.text!) + getNum(s: spendMoney.text!)) + getNum(s: myMoney.text!))₽ \nИтог кредита: \((countDeposit() - 1) * (getNum(s: keepMoney.text!)) + getNum(s: myMoney.text!) + (countDeposit() * (getNum(s: spendMoney.text!))))₽ \nИпотека: Потрачу \(myMoney.text!)₽ на первоначальный взнос, а \(getNum(s: flatPrice.text!) - getNum(s: myMoney.text!))₽ возьму в кредит и буду каждый месяц отдавать банку по \(getNum(s: keepMoney.text!) + getNum(s: spendMoney.text!))₽. За \(countCredit() / 12) лет и \(countCredit() % 12) месяцев потрачу на покупку квартиры и погашение ипотеки \(countCredit() * (getNum(s: keepMoney.text!) + getNum(s: spendMoney.text!)) + getNum(s: myMoney.text!))₽, включая \(countCredit() * (getNum(s: keepMoney.text!) + getNum(s: spendMoney.text!)) + getNum(s: myMoney.text!) - getNum(s: flatPrice.text!))₽ переплаты по процентам." + "\nВклад: открою вклад под \(depositSlider.value)% годовых, внесу \(myMoney.text!)₽, буду каждый месяц пополнять вклад на \(keepMoney.text!)₽ и снимать жилье за \(spendMoney.text!)₽. За \(countDeposit() / 12) лет и \(countDeposit() % 12) месяцев потрачу \((countDeposit() - 1) * (getNum(s: keepMoney.text!)) + getNum(s: myMoney.text!))₽ на пополнение вклада и \((countDeposit() * (getNum(s: spendMoney.text!))))₽ на аренду жилья, в сумме \((countDeposit() - 1) * (getNum(s: keepMoney.text!)) + getNum(s: myMoney.text!) + (countDeposit() * (getNum(s: spendMoney.text!))))₽. За это же время на вкладе накопится стоимость квартиры: \(flatPrice.text!)₽, включая \(getNum(s: flatPrice.text!) - (countDeposit() - 1) * (getNum(s: keepMoney.text!)) - getNum(s: myMoney.text!))₽, которые начислит банк в виде процентов."
